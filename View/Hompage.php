@@ -29,6 +29,10 @@
         <label>Product Information</label>
     </form>
 
+    <?php
+    
+    ?>
+
 
 </body>
 

@@ -1,26 +1,31 @@
 <?php
 
-require 'Controller/HomepageController.php';
+
 require 'Model/Database.php';
+require 'Model/Customer.php';
+require 'Model/CustomerLoader.php';
+require 'Model/CustomerGroup.php';
+require 'Model/CustomerGroupLoader.php';
+require 'Model/Product.php';
+require 'Model/ProductLoader.php';
+require 'Controller/HomepageController.php';
 
+<?php
+//database connection----need to be modify!!!
+class Database
+{
+    private $dbServer;
+    Private $dbUser;
+    Private $dbPassword;
+    Private $dbName;
 
-?>
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <?php
-    
-
-   
-
-    ?> 
-</body>
-</html>
+    public function dataConnection()
+    {
+        $this->dbServer = "becode.localhost";
+        $this->dbUser = "root";
+        $this->dbPassword = "admin";
+        $this->dbName = "priceCalculator";
+        $connection = new mysqli($this->dbServer, $this->dbUser, $this->dbPassword, $this->dbName);
+        return $connection;
+    }
+}

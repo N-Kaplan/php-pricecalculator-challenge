@@ -9,40 +9,43 @@ class Customer
     private $fixedDiscount;
     private $variableDiscount;
 
-    public function __construct($id, $firstname, $lastname, $groupId, $fixedDiscount, $vaiableDiscount){
+    public function __construct($id, $firstname, $lastname, $groupId, $fixedDiscount, $vaiableDiscount)
+    {
         $this->id = $id;
         $this->firstname = $firstname;
         $this->lastname = $lastname;
         $this->groupId = $groupId;
         $this->fixedDiscount = $fixedDiscount;
         $this->variableDiscount = $vaiableDiscount;
-
     }
-    
-    public function getId(){
+
+    public function getId()
+    {
         return $this->id;
     }
 
-    public function getFirstname(){
+    public function getFirstname()
+    {
         return $this->firstname;
     }
 
-    public function getLastname(){
+    public function getLastname()
+    {
         return $this->lastname;
     }
-    
-    public function getGroupId(){
+
+    public function getGroupId()
+    {
         return $this->groupId;
     }
 
-    public function getFixedDiscount(){
+    public function getFixedDiscount()
+    {
         return $this->fixedDiscount;
     }
 
-    public function getVariableDiscount(){
+    public function getVariableDiscount()
+    {
         return $this->variableDiscount;
     }
-
-
-
 }

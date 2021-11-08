@@ -1,6 +1,8 @@
 <?php
 
-include_once 'Model/Database.php';
+require 'Controller/HomepageController.php';
+require 'Model/Database.php';
+
 
 ?>
 
@@ -15,18 +17,7 @@ include_once 'Model/Database.php';
 </head>
 <body>
     <?php
-    $sql = "SELECT * FROM customer";
-    $result = mysqli_query($connection, $sql);
-    $resultCheck = mysqli_num_rows($result);
-    //echo $resultCheck;
-    if ($resultCheck >= 0){
-        //$customers = mysqli_fetch_assoc(($result));
-        //var_dump($row);
-        
-        while($row = mysqli_fetch_assoc(($result))){
-            echo $row['id'] . " " . $row['firstname'] . "<br>";
-        }
-    }
+    
 
    
 

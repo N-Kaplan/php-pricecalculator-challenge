@@ -15,10 +15,17 @@
         <select name="custoners" id="customers">
             <option value=""></option>
         </select>
+        <br>
+        <br>
         <label>Product</label>
         <select name="product" id="product">
             <option value=""></option>
         </select>
+        <br>
+        <br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <br>
+        <br>
         <label>Product Information</label>
     </form>
 

@@ -8,7 +8,8 @@ class CustomerLoader extends Database
     {
         $sql = "SELECT * FROM customer";
         $result = $this->dataConnection()->query($sql);
-        foreach($result as $customer){
+        
+        foreach($result->fetch_assoc() as $customer){
             $this->customers[] = new Customer(
                 $customer['id'],
                 $customer['firstname'],
@@ -17,7 +18,6 @@ class CustomerLoader extends Database
                 $customer['fixedDiscount'],
                 $customer['vaiableDiscount']
             );
-            var_dump($result[0]);
         }
         /*
         $numRows = $result->num_rows;
@@ -31,7 +31,7 @@ class CustomerLoader extends Database
         */
 
     }
-
+  
     public function getCustomers(): array
     {
         return $this->customers;

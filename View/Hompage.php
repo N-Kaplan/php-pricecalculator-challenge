@@ -1,3 +1,8 @@
+<?php
+$products = new ProductLoader();
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,7 +24,13 @@
         <br>
         <label>Product</label>
         <select name="product" id="product">
-            <option value=""></option>
+           
+                <?php
+                foreach ($products->getProducts() as $product) {
+                    echo "<option value='{$product->getId()}'>{$product->getName()}: € " . ($product->getPrice()/100). "</option>";
+                }
+                ?>
+            
         </select>
         <br>
         <br>
@@ -28,11 +39,6 @@
         <br>
         <label>Product Information</label>
     </form>
-
-    <?php
-    
-    ?>
-
 
 </body>
 

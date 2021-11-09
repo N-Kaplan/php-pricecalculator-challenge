@@ -27,7 +27,7 @@ class CustomerGroup
     }
 
     public function getParentId(){
-        return $this->parentId;
+        return $this->name;
     }
 
     public function getFixedDiscount(){

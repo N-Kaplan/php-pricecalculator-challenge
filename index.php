@@ -41,4 +41,4 @@ echo $test;
 
 $cl = new CustomerLoader();
 $all_customers = $cl->getCustomers();
-var_dump($all_customers);
+//var_dump($all_customers);

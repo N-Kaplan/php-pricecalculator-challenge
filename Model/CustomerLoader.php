@@ -2,7 +2,6 @@
 require 'Database.php';
 class CustomerLoader
 {
-
     private array $customers = [];
 
     public function getCustomers(): array
@@ -34,11 +33,10 @@ class CustomerLoader
     public function getCustomerById(string $id)
     {
         $customers = $this->getCustomers();
-        foreach ($customers AS $customer) {
+        foreach ($customers as $customer) {
             if ($customer->getId() === $id) {
                 return $customer;
             }
         }
     }
-
- }
+}

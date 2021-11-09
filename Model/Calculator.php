@@ -63,24 +63,52 @@ class Calculator
         return $fixed_discount;
     }
 
-    public function pickDiscount(): array
+    public function pickGroupDiscount(): array
     {
         $original_price = $this->product->getPrice();
         $discount_type = '';
 
         $price_after_variable_disc = ($original_price * (100-$this->pickVariableDiscount()))/100;
-        $price_after_fixed_disc = $original_price - $this->addUpFixedDiscount();
+        $price_after_fixed_disc = $original_price - $this->addUpFixedDiscount() > 0 ? $original_price - $this->addUpFixedDiscount() : 0;
 
         if ($price_after_variable_disc < $price_after_fixed_disc) {
             $subtotal = $price_after_variable_disc;
-            $discount_type = "fixed";
+            $discount_type = "fixed group discount";
+            $discount = $this->pickVariableDiscount();
         } else {
             $subtotal = $price_after_fixed_disc;
-            $discount_type = "variable";
+            $discount_type = "variable group discount";
+            $discount = $this->addUpFixedDiscount();
         }
-        return array($subtotal, $discount_type);
-
+        return array($subtotal, $discount_type, $discount);
     }
 
+    public function finalPrice(): array
+    {
+        $original_price = $this->product->getPrice();
+        $before_customer_discount = $this->pickGroupDiscount();
+        $subtotal = $before_customer_discount[0];
+        $discount_type = $before_customer_discount[1];
+        $discount = $before_customer_discount[2];
 
+        $customer_var_discount = $this->customer->getVariableDiscount();
+        $customer_fixed_discount = $this->customer->getFixedDiscount();
+
+        switch ($discount_type) {
+            case "fixed group discount":
+                $subtotal -= $customer_fixed_discount;
+                break;
+            case "variable group discount":
+                if ($customer_var_discount !== null && $customer_var_discount >= $discount) {
+                    $discount = $customer_var_discount;
+                    $discount_type = "customer variable discount";
+                } // else the earlier defined discount and subtotal are kept
+                $subtotal = ($original_price * (100 - $discount))/100;
+                break;
+            default:
+                $subtotal = $original_price;
+                $discount_type = "no discount available";
+        }
+        return array(number_format($subtotal/100, 2), $discount_type);
+    }
 }

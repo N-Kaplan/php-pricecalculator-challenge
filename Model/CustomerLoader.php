@@ -31,4 +31,14 @@ class CustomerLoader
         return $customers;
     }
 
+    public function getCustomerById(string $id)
+    {
+        $customers = $this->getCustomers();
+        foreach ($customers AS $customer) {
+            if ($customer->getId() === $id) {
+                return $customer;
+            }
+        }
+    }
+
  }

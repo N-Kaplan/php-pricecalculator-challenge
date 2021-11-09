@@ -28,4 +28,14 @@ class ProductLoader
 
         return $products;
     }
+
+    public function getProductById(string $id)
+    {
+        $products = $this->getProducts();
+        foreach ($products AS $product) {
+            if ($product->getId() === $id) {
+                return $product;
+            }
+        }
+    }
 }

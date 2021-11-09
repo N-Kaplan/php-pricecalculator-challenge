@@ -4,11 +4,6 @@ class CustomerGroupLoader{
     //private array $customerGroups = [];
 
 
-    public function __construct()
-    {
-        
-    }
-
     public function getCustomerGroups(): array
     {
         $sql = "SELECT * FROM customer_group";
@@ -33,7 +28,7 @@ class CustomerGroupLoader{
         return $customer_groups;
     }
 
-    public function getCustomerGroupById($id)
+    public function getCustomerGroupById(string $id)
     {
         $customer_groups = $this->getCustomerGroups();
         foreach ($customer_groups AS $group) {

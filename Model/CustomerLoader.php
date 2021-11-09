@@ -1,34 +1,31 @@
 <?php
-
-class CustomerLoader extends Database
+require 'Database.php';
+class CustomerLoader
 {
+    
     private array $customers = [];
 
     public function __construct()
     {
         $sql = "SELECT * FROM customer";
-        $result = $this->dataConnection()->query($sql);
+        $db = new Database;
+        $result = $db->dataConnection()->query($sql);
         
-        foreach($result->fetch_assoc() as $customer){
-            $this->customers[] = new Customer(
-                $customer['id'],
-                $customer['firstname'],
-                $customer['lastname'],
-                $customer['groupId'],
-                $customer['fixedDiscount'],
-                $customer['vaiableDiscount']
-            );
-        }
-        /*
-        $numRows = $result->num_rows;
-        if($numRows>0){
+        if($result->num_rows > 0){
             while($row = $result->fetch_assoc()){
-                $data[] = $row;
+                $id = $row['id'];
+                $firstname = $row['firstname'];
+                $lastname= $row['lastname'];
+                $groupId = $row['group_id'];
+                $fixedDiscount = $row['fixed_discount'];
+                $variableDiscount = $row['variable_discount'];
+                 echo $id ." ". $firstname." ".  $lastname." ".  $groupId." ".  $fixedDiscount." ".  $variableDiscount. "<br>";
+
             }
-            return $data;
+            
       
         }
-        */
+        
 
     }
   
@@ -37,5 +34,4 @@ class CustomerLoader extends Database
         return $this->customers;
     }
 
-
-}
+ }

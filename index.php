@@ -32,4 +32,8 @@ $result =  $db->dataConnection()->query($sql);
 
 $pl = new ProductLoader();
 $all_products = $pl->getProducts();
-var_dump($all_products);
+//var_dump($all_products);
+
+$gl = new CustomerGroupLoader();
+$all_groups = $gl->getCustomerGroups();
+var_dump($all_groups);

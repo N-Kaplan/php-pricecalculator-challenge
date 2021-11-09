@@ -36,4 +36,9 @@ $all_products = $pl->getProducts();
 
 $gl = new CustomerGroupLoader();
 $all_groups = $gl->getCustomerGroups();
-var_dump($all_groups);
+$test = $all_groups[0]->getId();
+echo $test;
+
+$cl = new CustomerLoader();
+$all_customers = $cl->getCustomers();
+var_dump($all_customers);

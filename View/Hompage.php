@@ -12,7 +12,7 @@
     <h1>Price Calculator</h1>
     <form method="post">
         <label>Customer</label>
-        <select name="custoners" id="customers">
+        <select name="customers" id="customers">
             <option value=""></option>
         </select>
         <br>

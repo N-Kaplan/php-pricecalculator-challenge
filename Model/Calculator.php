@@ -18,23 +18,49 @@ class Calculator
         $this->customerGroup = $customerGroup;
     }
 
-    private function pickVariableDiscount()
+    public function getGroups(): array
     {
-        //add all relevant groups' variable discounts to 1 array
-        $groups_var_discount = [intval($this->customerGroup->getVariableDiscount())];
+        //add all relevant groups to 1 array
+        $groups = [$this->customerGroup];
         $parent_group_id = $this->customerGroup->getParentId();
         if ($parent_group_id !== null) {
             $gl = new CustomerGroupLoader();
             $parent_group = $gl->getCustomerGroupById($parent_group_id);
-            $groups_var_discount[] = intval($parent_group->getVariableDiscount());
+            $groups[] = $parent_group;
 
             //check if parent group has its own parent group
             $grandparent_group_id = $parent_group->getParentId();
             if ($grandparent_group_id !== null) {
                 $grandparent_group = $gl->getCustomerGroupById($grandparent_group_id);
-                $groups_var_discount[] = intval($grandparent_group->getVariableDiscount());
+                $groups[] = $grandparent_group;
             }
         }
+        return $groups;
+    }
+
+    public function pickVariableDiscount(): int
+    {
+        //add all relevant groups' variable discounts to 1 array
+        $groups = $this->getGroups();
+        $groups_var_discount = [];
+        foreach ($groups AS $group) {
+            $groups_var_discount[] = intval($group->getVariableDiscount());
+        }
+
         return max($groups_var_discount);
+    }
+
+    public function addUpFixedDiscount(): int
+    {
+        $groups = $this->getGroups();
+        $fixed_discount = 0;
+
+        foreach ($groups AS $group) {
+            $fixed_discount += intval($group->getFixedDiscount());
+        }
+
+        $fixed_discount += intval($this->customer->getFixedDiscount());
+
+        return $fixed_discount;
     }
 }

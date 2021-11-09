@@ -10,4 +10,16 @@ require 'Model/Product.php';
 require 'Model/ProductLoader.php';
 require 'Controller/HomepageController.php';
 
+$sql = "SELECT * FROM product";
+$db =  new Database;
+$result =  $db->dataConnection()->query($sql);
+
+if ($result->num_rows > 0) {
+    // output data of each row
+    while ($row = $result->fetch_assoc()) {
+        var_dump($row);
+        $row->
+    }
+}
+
 

@@ -1,7 +1,7 @@
 <?php
 
 class CustomerGroupLoader{
-    private array $customerGroups = [];
+    //private array $customerGroups = [];
 
 
     public function __construct()
@@ -32,4 +32,15 @@ class CustomerGroupLoader{
 
         return $customer_groups;
     }
+
+    public function getCustomerGroupById($id)
+    {
+        $customer_groups = $this->getCustomerGroups();
+        foreach ($customer_groups AS $group) {
+            if ($group->getId() === $id) {
+                return $group;
+            }
+        }
+    }
+
 }

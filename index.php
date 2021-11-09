@@ -10,6 +10,8 @@ require 'Model/Product.php';
 require 'Model/ProductLoader.php';
 require 'Controller/HomepageController.php';
 
+$controller = new HomepageController();
+$controller->render($_GET, $_POST);
 
 //$sql = "SELECT * FROM product";
 //$db =  new Database;

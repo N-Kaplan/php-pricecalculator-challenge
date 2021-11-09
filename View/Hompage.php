@@ -1,7 +1,3 @@
-<?php
-$products = new ProductLoader();
-?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,21 +12,24 @@ $products = new ProductLoader();
 <body>
     <h1>Price Calculator</h1>
     <form method="post">
-        <label>Customer</label>
+        <label>Customer Name: </label>
         <select name="customers" id="customers">
-            <option value=""></option>
+            <?php
+            foreach ($getCustomer as $customer) {
+                echo "<option value='{$customer->getId()}'>{$customer->getFirstname()}  " . $customer->getLastname() . "</option>";
+            }
+            ?>
         </select>
         <br>
         <br>
-        <label>Product</label>
+        <label>Choose a Product</label>
         <select name="product" id="product">
-           
-                <?php
-                foreach ($products->getProducts() as $product) {
-                    echo "<option value='{$product->getId()}'>{$product->getName()}: € " . ($product->getPrice()/100). "</option>";
-                }
-                ?>
-            
+            <?php
+            foreach ($getProduct as $product) {
+                echo "<option value='{$product->getId()}'>{$product->getName()}: € " . ($product->getPrice() / 100) . "</option>";
+            }
+            ?>
+
         </select>
         <br>
         <br>

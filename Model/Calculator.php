@@ -58,9 +58,29 @@ class Calculator
         foreach ($groups AS $group) {
             $fixed_discount += intval($group->getFixedDiscount());
         }
-
-        $fixed_discount += intval($this->customer->getFixedDiscount());
+        //$fixed_discount += intval($this->customer->getFixedDiscount());
 
         return $fixed_discount;
     }
+
+    public function pickDiscount(): array
+    {
+        $original_price = $this->product->getPrice();
+        $discount_type = '';
+
+        $price_after_variable_disc = ($original_price * (100-$this->pickVariableDiscount()))/100;
+        $price_after_fixed_disc = $original_price - $this->addUpFixedDiscount();
+
+        if ($price_after_variable_disc < $price_after_fixed_disc) {
+            $subtotal = $price_after_variable_disc;
+            $discount_type = "fixed";
+        } else {
+            $subtotal = $price_after_fixed_disc;
+            $discount_type = "variable";
+        }
+        return array($subtotal, $discount_type);
+
+    }
+
+
 }

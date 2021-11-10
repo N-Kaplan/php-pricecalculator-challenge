@@ -9,7 +9,7 @@ class Database
 
     public function dataConnection()
     {
-        $this->dbServer = "localhost";
+        $this->dbServer = "becode.localhost";
         $this->dbUser = "root";
         $this->dbPassword = "admin";
         $this->dbName = "priceCalculator";

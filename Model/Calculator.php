@@ -115,6 +115,12 @@ class Calculator
                 $subtotal = $original_price;
                 $discount_type = "no discount available";
         }
+
+        if ($customer_fixed_discount !== null) {
+            $subtotal -= $customer_fixed_discount;
+            $discount_type .= " & fixed customer discount";
+        }
+
         return array(number_format($subtotal/100, 2), $discount_type);
     }
 }

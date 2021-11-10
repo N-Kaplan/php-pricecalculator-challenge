@@ -38,7 +38,37 @@
         <br>
         <label>Product Information</label>
     </form>
+    
+    <?php
 
+
+//var_dump($all_products);
+$test2 = $getProduct[0];
+echo $test2->getName();
+echo $test2->getPrice();
+//$test_prod = $pl->getProductById("5");
+echo $productData;
+
+
+$test = $getCustomerGroup[0]->getId();
+$test_group = $customerGroup->getCustomerGroupById("1");
+//echo $test;
+
+
+$cl = new CustomerLoader();
+$all_customers = $cl->getCustomers();
+//var_dump($all_customers);
+
+$test_cust = $cl->getCustomerById("3");
+var_dump($test_cust);
+
+$calc = new Calculator($test_prod, $test_cust, $test_group);
+var_dump($calc->pickVariableDiscount());
+var_dump($calc->getGroups());
+var_dump($calc->addUpFixedDiscount());
+var_dump($calc->pickGroupDiscount());
+var_dump($calc->finalPrice());
+?>
 </body>
 
 </html>

@@ -15,7 +15,6 @@ class CustomerGroup
         $this->parentId = $parentId;
         $this->fixedDiscount = $fixedDiscount;
         $this->variableDiscount = $variableDiscount;
-
     }
 
     public function getId(){

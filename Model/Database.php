@@ -11,8 +11,8 @@ class Database
     {
         $this->dbServer = "localhost";
         $this->dbUser = "root";
-        $this->dbPassword = "admin";
-        $this->dbName = "priceCalculator";
+        $this->dbPassword = "";
+        $this->dbName = "calculator";
         $connection = new mysqli($this->dbServer, $this->dbUser, $this->dbPassword, $this->dbName);
         return $connection;
     }

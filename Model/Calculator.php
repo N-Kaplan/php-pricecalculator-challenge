@@ -4,7 +4,7 @@ class Calculator
 {
     private Product $product;
     private Customer $customer;
-    private CustomerGroup $customerGroup;
+    //private CustomerGroup $customerGroup;
 
     /**
      * @param Product $product

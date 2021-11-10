@@ -13,30 +13,33 @@ require 'Controller/HomepageController.php';
 $controller = new HomepageController();
 $controller->render($_GET, $_POST);
 
-
-$pl = new ProductLoader();
-$all_products = $pl->getProducts();
-//var_dump($all_products);
-$test2 = $all_products[0];
-echo $test2->getName();
-echo $test2->getPrice();
-$test_prod = $pl->getProductById("5");
-
-$gl = new CustomerGroupLoader();
-$all_groups = $gl->getCustomerGroups();
-$test = $all_groups[0]->getId();
-$test_group = $gl->getCustomerGroupById("1");
-//echo $test;
+//
+//$pl = new ProductLoader();
+//$all_products = $pl->getProducts();
+////var_dump($all_products);
+//$test2 = $all_products[0];
+//echo $test2->getName();
+//echo $test2->getPrice();
+//$test_prod = $pl->getProductById("5");
+//
+//$gl = new CustomerGroupLoader();
+//$all_groups = $gl->getCustomerGroups();
+//$test = $all_groups[0]->getId();
+//$test_group = $gl->getCustomerGroupById("3");
+////echo $test;
 
 
 $cl = new CustomerLoader();
 $all_customers = $cl->getCustomers();
+$test_customer = $cl->getCustomerById('5');
+var_dump($test_customer);
 //var_dump($all_customers);
 
-$test_cust = $cl->getCustomerById("3");
+$test_cust = $cl->getCustomerById("10");
 var_dump($test_cust);
 
 $calc = new Calculator($test_prod, $test_cust, $test_group);
+var_dump($calc);
 var_dump($calc->pickVariableDiscount());
 var_dump($calc->getGroups());
 var_dump($calc->addUpFixedDiscount());

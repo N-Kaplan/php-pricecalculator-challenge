@@ -1,18 +1,14 @@
 <?php
 
-class InfoController 
+class InfoController
 {
-public function render(array $GET, array $POST){
+    public function render(array $GET, array $POST)
+    {
 
-    $products = new ProductLoader();
-    $getProduct = $products->getProducts();
+        $products = new ProductLoader();
+        $getProduct = $products->getProducts();
+        
 
-    require 'View/infoPage.php';
+        require 'View/infoPage.php';
+    }
 }
-
-
-}
-
-
-
-?>

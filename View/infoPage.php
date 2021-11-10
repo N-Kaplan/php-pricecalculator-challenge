@@ -1,8 +1,4 @@
-<?php
 
-
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,10 +12,10 @@
 <body>
     <h1>Product Information</h1>
     <p><a href="index.php">Back to Homepage</a></p>
-    
-   
+
+
     <?php
-        echo "
+    echo "
         <tr>
         <th>ID</th>
         <th>Name</th>
@@ -32,17 +28,16 @@
                 <td>{$product->getName()}</td>
                 <td>{$product->getPrice()}</td>
             </tr><br>";
-           //echo "</table>";
-        //echo "Id: ". $product->getId(). "  Name: ".  $product->getName(). "  Price: ". $product->getPrice(). "<br>";
+
     }
-    
+
 
     ?>
 
 
- 
-    
-   
+
+
+
 </body>
 
 </html>

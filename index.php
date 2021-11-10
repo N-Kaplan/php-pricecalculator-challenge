@@ -16,7 +16,11 @@ require 'Model/Product.php';
 require 'Model/ProductLoader.php';
 require 'Model/Calculator.php';
 require 'Controller/HomepageController.php';
+require 'Controller/InfoController.php';
 
 $controller = new HomepageController();
+if(isset($_GET['page']) && $_GET['page'] === 'infoPage'){
+    $controller = new InfoController();
+}
 $controller->render($_GET, $_POST);
 

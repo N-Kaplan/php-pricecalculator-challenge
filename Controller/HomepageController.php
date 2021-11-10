@@ -25,6 +25,9 @@ class HomepageController
             var_dump($calc->pickGroupDiscount());
             var_dump($calc->finalPrice());
 
+            $priceData = $calc->finalPrice();
+            $priceDisplay = "Original Price: € " . $priceData[0] . " <br>After discount: €" . $priceData[1] . "<br>" . "Discount information: " . $priceData[2] .".";
+
             
 
         }

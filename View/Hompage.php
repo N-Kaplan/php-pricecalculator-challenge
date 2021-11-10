@@ -11,6 +11,7 @@
 
 <body>
     <h1>Price Calculator</h1>
+    <p><a href="index.php? page=infoPage">Product Infomation</a>
     <form method="post">
         <label>Customer Name: </label>
         <select name="customers" id="customers">
@@ -36,17 +37,21 @@
         <button type="submit" class="btn btn-primary">Submit</button>
         <br>
         <br>
-     <label>Product Information</label>
+<!--        <label>Product Information</label>-->
     </form>
+
+    <section>
+        <?php
+        if (isset($priceDisplay)) {
+            echo "Customer Name: ". $customerData->getFirstname() . "  ".  $customerData->getLastname() . "<br>";
+            echo "Product Name: ". $productData->getName() . "<br>";
+            echo $priceDisplay;
             
-    <?php
+        }
 
-    echo $customerData->getFirstname();
+        ?>
+    </section>
 
-        
-
-
-    ?>
 </body>
 
 </html>

@@ -2,6 +2,18 @@
 require 'Database.php';
 class CustomerLoader
 {
+    private function assignCustomerData($row): Customer
+    {
+        $id = ($row['id']);
+        $firstname = ($row['firstname']);
+        $lastname = ($row['lastname']);
+        $group_id = ($row['group_id']);
+        $fixed_discount = ($row['fixed_discount']);
+        $variable_discount = ($row['variable_discount']);
+
+        return new Customer($id, $firstname, $lastname, $group_id, $fixed_discount, $variable_discount);
+    }
+
     public function getCustomers(): array
     {
         $sql = "SELECT * FROM customer";
@@ -12,15 +24,7 @@ class CustomerLoader
         if ($result->num_rows > 0) {
             // output data of each row
             while ($row = $result->fetch_assoc()) {
-                $id = ($row['id']);
-                $firstname = ($row['firstname']);
-                $lastname = ($row['lastname']);
-                $group_id = ($row['group_id']);
-                $fixed_discount = ($row['fixed_discount']);
-                $variable_discount = ($row['variable_discount']);
-
-
-                $cust = new Customer($id, $firstname, $lastname, $group_id, $fixed_discount, $variable_discount);
+                $cust = $this->assignCustomerData($row);
                 $customers[] = $cust;
             }
         }
@@ -34,16 +38,9 @@ class CustomerLoader
         $sql = "SELECT * FROM customer WHERE id=" . $id;
         $db = new Database;
         $result = $db->dataConnection()->query($sql);
-        //todo fetch_assoc
         $row = $result->fetch_assoc();
-        $id = ($row['id']);
-        $firstname = ($row['firstname']);
-        $lastname = ($row['lastname']);
-        $group_id = ($row['group_id']);
-        $fixed_discount = ($row['fixed_discount']);
-        $variable_discount = ($row['variable_discount']);
 
-        return new Customer($id, $firstname, $lastname, $group_id, $fixed_discount, $variable_discount);
+        return $this->assignCustomerData($row);
 
     }
 }

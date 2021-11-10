@@ -15,6 +15,7 @@ require 'Model/CustomerGroupLoader.php';
 require 'Model/Product.php';
 require 'Model/ProductLoader.php';
 require 'Model/Calculator.php';
+require 'Model/CalculatorDisplay.php';
 require 'Controller/HomepageController.php';
 require 'Controller/InfoController.php';
 

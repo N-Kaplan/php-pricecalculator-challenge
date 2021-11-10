@@ -26,10 +26,15 @@ class HomepageController
             var_dump($calc->finalPrice());
 
             $priceData = $calc->finalPrice();
-            $priceDisplay = "Original Price: € " . $priceData[0] . " <br>After discount: €" . $priceData[1] . "<br>" . "Discount information: " . $priceData[2] .".";
 
-            
+            $priceDisplay = "Original Price: € " . $priceData[0] . " <br>
+                               Subtotal after group discount: €" . $priceData[1] . "<br>" .
+                              "Total after customer discount: €" . $priceData[2] . "<br>" .
+                              "Discount information: " . $priceData[3] .", " . $priceData[4] . ".";
 
+            //display
+            $calcDisplay = new CalculatorDisplay();
+            $display = $calcDisplay->displayCalculation($calc);
         }
 
         require 'View/Hompage.php';

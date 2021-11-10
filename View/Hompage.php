@@ -45,9 +45,15 @@
         if (isset($priceDisplay)) {
             echo "Customer Name: ". $customerData->getFirstname() . "  ".  $customerData->getLastname() . "<br>";
             echo "Product Name: ". $productData->getName() . "<br>";
+
+            var_dump($customerData);
+            var_dump($productData);
             echo $priceDisplay;
-            
         }
+
+//        if(isset($display)) {
+//            echo "<table><tr>". $display . "</tr></table>";
+//        }
 
         ?>
     </section>

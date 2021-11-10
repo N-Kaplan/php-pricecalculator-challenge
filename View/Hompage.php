@@ -38,11 +38,16 @@
         <br>
 <!--        <label>Product Information</label>-->
     </form>
-    
-    <?php
 
+    <section>
+        <?php
+        if (isset($priceDisplay)) {
+            echo $priceDisplay;
+        }
 
-?>
+        ?>
+    </section>
+
 </body>
 
 </html>

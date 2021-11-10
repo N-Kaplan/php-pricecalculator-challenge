@@ -121,6 +121,6 @@ class Calculator
             $discount_type .= " & fixed customer discount";
         }
 
-        return array(number_format($subtotal/100, 2), $discount_type);
+        return array(number_format($original_price/100, 2), number_format($subtotal/100, 2), $discount_type);
     }
 }

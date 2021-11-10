@@ -36,19 +36,17 @@
         <button type="submit" class="btn btn-primary">Submit</button>
         <br>
         <br>
-<!--        <label>Product Information</label>-->
+     <label>Product Information</label>
     </form>
-    
+            
     <?php
 
-foreach($getCustomer as $customer){
-    echo $customer->getId(3). "<br>";
-}
+    echo $customerData->getFirstname();
+
+        
 
 
-
-
-?>
+    ?>
 </body>
 
 </html>

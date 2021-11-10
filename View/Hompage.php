@@ -41,6 +41,12 @@
     
     <?php
 
+foreach($getCustomer as $customer){
+    echo $customer->getId(3). "<br>";
+}
+
+
+
 
 ?>
 </body>

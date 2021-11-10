@@ -1,7 +1,7 @@
 <?php
 
 class CustomerGroupLoader{
-    //private array $customerGroups = [];
+    
 
 
     public function getCustomerGroups(): array

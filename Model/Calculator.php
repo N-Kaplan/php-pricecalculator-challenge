@@ -83,34 +83,36 @@ class Calculator
         $before_customer_discount = $this->pickGroupDiscount();
         $subtotal = $before_customer_discount[0];
         $total = $subtotal;
-        $discount_type = $before_customer_discount[1];
+        $group_discount_type = $before_customer_discount[1];
+        $customer_discount_type = "";
         $discount = $before_customer_discount[2];
 
         $customer_var_discount = $this->customer->getVariableDiscount();
-        $customer_fixed_discount = intval($this->customer->getFixedDiscount())*100;
+        $customer_fixed_discount = $this->customer->getFixedDiscount();
 
-        switch ($discount_type) {
+        if ($customer_fixed_discount !== null) {
+            $total -= $customer_fixed_discount;
+            $customer_discount_type = "fixed customer discount";
+        }
+
+        switch ($group_discount_type) {
             case "fixed group discount":
-                $total -= $customer_fixed_discount;
+                //$total -= intval($customer_fixed_discount)*100;
                 break;
             case "variable group discount":
                 if ($customer_var_discount !== null && $customer_var_discount >= $discount) {
                     $discount = $customer_var_discount;
-                    $discount_type = "customer variable discount";
+                    $customer_discount_type = "customer variable discount";
                 } // else the earlier defined discount and subtotal are kept
                 $total = ($original_price * (100 - $discount))/100;
                 break;
             default:
                 $total = $original_price;
-                $discount_type = "no discount available";
+                $group_discount_type = $customer_discount_type = "no discount available";
         }
 
-        if ($customer_fixed_discount !== null) {
-            $total -= $customer_fixed_discount;
-            $discount_type .= " & fixed customer discount";
-        }
         //original price, subtotal after group discount, total after customer discount, discount type.
-        return array(number_format($original_price/100, 2), number_format($subtotal/100, 2), number_format($total/100, 2), $discount_type);
+        return array(number_format($original_price/100, 2), number_format($subtotal/100, 2), number_format($total/100, 2), $group_discount_type, $customer_discount_type);
     }
 
 }

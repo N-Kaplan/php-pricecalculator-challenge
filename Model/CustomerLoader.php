@@ -28,6 +28,7 @@ class CustomerLoader
                 $customers[] = $cust;
             }
         }
+       
 
         return $customers;
     }

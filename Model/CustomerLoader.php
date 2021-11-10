@@ -7,8 +7,8 @@ class CustomerLoader
     public function getCustomers(): array
     {
         $sql = "SELECT * FROM customer";
-        $db =  new Database;
-        $result =  $db->dataConnection()->query($sql);
+        $db = new Database;
+        $result = $db->dataConnection()->query($sql);
 
         $customers = [];
         if ($result->num_rows > 0) {
@@ -30,15 +30,23 @@ class CustomerLoader
         return $customers;
     }
 
+    //todo: separate duplicate code from both functions in this class
     public function getCustomerById(string $id)
     {
-        $customers = $this->getCustomers();
+        $sql = "SELECT * FROM customer WHERE id=" . $id;
+        $db = new Database;
+        $result = $db->dataConnection()->query($sql);
+        //todo fetch_assoc
+        $row = $result->fetch_assoc();
+        $id = ($row['id']);
+        $firstname = ($row['firstname']);
+        $lastname = ($row['lastname']);
+        $group_id = ($row['group_id']);
+        $fixed_discount = ($row['fixed_discount']);
+        $variable_discount = ($row['variable_discount']);
 
-        foreach ($customers AS $customer) {
-            if ($customer->getId() === $id) {
-                return $customer;
-            }
-        }
+        return new Customer($id, $firstname, $lastname, $group_id, $fixed_discount, $variable_discount);
+
     }
 }
 

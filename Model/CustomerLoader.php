@@ -1,8 +1,11 @@
 <?php
-require 'Database.php';
+
+use JetBrains\PhpStorm\Pure;
+
+//require 'Connection.php';
 class CustomerLoader
 {
-    private function assignCustomerData($row): Customer
+    #[Pure] private function assignCustomerData($row): Customer
     {
         $id = ($row['id']);
         $firstname = ($row['firstname']);
@@ -17,7 +20,7 @@ class CustomerLoader
     public function getCustomers(): array
     {
         $sql = "SELECT * FROM customer";
-        $db = new Database;
+        $db = new Connection;
         $result = $db->dataConnection()->query($sql);
 
         $customers = [];
@@ -32,11 +35,10 @@ class CustomerLoader
         return $customers;
     }
 
-    //todo: separate duplicate code from both functions in this class
-    public function getCustomerById(string $id)
+    public function getCustomerById(string $id): Customer
     {
         $sql = "SELECT * FROM customer WHERE id=" . $id;
-        $db = new Database;
+        $db = new Connection;
         $result = $db->dataConnection()->query($sql);
         $row = $result->fetch_assoc();
 

@@ -1,13 +1,12 @@
 <?php
 
-class CustomerGroupLoader{
-    //private array $customerGroups = [];
 
+class CustomerGroupLoader{
 
     public function getCustomerGroups(): array
     {
         $sql = "SELECT * FROM customer_group";
-        $db =  new Database;
+        $db =  new Connection;
         $result =  $db->dataConnection()->query($sql);
 
         $customer_groups = [];

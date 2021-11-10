@@ -10,7 +10,7 @@ class ProductLoader
     public function getProducts(): array
     {
         $sql = "SELECT * FROM product";
-        $db =  new Database;
+        $db =  new Connection;
         $result =  $db->dataConnection()->query($sql);
 
         $products = [];

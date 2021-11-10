@@ -1,6 +1,12 @@
 <?php
 //todo: separate the getById functions from the 3 loader classes to avoid repeating code.
 
+require 'Model/DotEnv.php';
+
+$env = new DotEnv(__DIR__ . '/.env');
+$env -> load();
+
+require 'Model/Connection.php';
 require 'Model/Customer.php';
 require 'Model/CustomerLoader.php';
 require 'Model/CustomerGroup.php';

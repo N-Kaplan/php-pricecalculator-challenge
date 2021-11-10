@@ -13,8 +13,7 @@
     <h1>Product Information</h1>
     <p><a href="index.php">Back to Homepage</a></p>
 
-
-    <?php
+<?php
     echo "
         <tr>
         <th>ID</th>
@@ -28,16 +27,8 @@
                 <td>{$product->getName()}</td>
                 <td>{$product->getPrice()}</td>
             </tr><br>";
-
     }
-
-
     ?>
-
-
-
-
-
 </body>
 
 </html>

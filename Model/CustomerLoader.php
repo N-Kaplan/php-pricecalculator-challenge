@@ -2,8 +2,6 @@
 require 'Database.php';
 class CustomerLoader
 {
-    private array $customers = [];
-
     public function getCustomers(): array
     {
         $sql = "SELECT * FROM customer";

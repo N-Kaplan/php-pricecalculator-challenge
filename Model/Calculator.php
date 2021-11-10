@@ -11,28 +11,34 @@ class Calculator
      * @param Customer $customer
      * @param CustomerGroup $customerGroup
      */
-    public function __construct(Product $product, Customer $customer, CustomerGroup $customerGroup)
+    public function __construct(Product $product, Customer $customer)
     {
         $this->product = $product;
         $this->customer = $customer;
-        $this->customerGroup = $customerGroup;
     }
 
     public function getGroups(): array
     {
         //add all relevant groups to 1 array
-        $groups = [$this->customerGroup];
-        $parent_group_id = $this->customerGroup->getParentId();
-        if ($parent_group_id !== null) {
+        $group_id = $this->customer->getGroupId();
+        $groups = [];
+        if ($group_id !== null) {
             $gl = new CustomerGroupLoader();
-            $parent_group = $gl->getCustomerGroupById($parent_group_id);
-            $groups[] = $parent_group;
+            $group = $gl->getCustomerGroupById($group_id);
+            $groups[] = $group;
 
-            //check if parent group has its own parent group
-            $grandparent_group_id = $parent_group->getParentId();
-            if ($grandparent_group_id !== null) {
-                $grandparent_group = $gl->getCustomerGroupById($grandparent_group_id);
-                $groups[] = $grandparent_group;
+            // check if the group has a parent group
+            $parent_group_id = $group->getParentId();
+            if ($parent_group_id !== null) {
+                $parent_group = $gl->getCustomerGroupById($parent_group_id);
+                $groups[] = $parent_group;
+
+                //check if parent group has its own parent group
+                $grandparent_group_id = $parent_group->getParentId();
+                if ($grandparent_group_id !== null) {
+                    $grandparent_group = $gl->getCustomerGroupById($grandparent_group_id);
+                    $groups[] = $grandparent_group;
+                }
             }
         }
         return $groups;
@@ -73,11 +79,11 @@ class Calculator
 
         if ($price_after_variable_disc < $price_after_fixed_disc) {
             $subtotal = $price_after_variable_disc;
-            $discount_type = "fixed group discount";
+            $discount_type = "variable group discount";
             $discount = $this->pickVariableDiscount();
         } else {
             $subtotal = $price_after_fixed_disc;
-            $discount_type = "variable group discount";
+            $discount_type = "fixed group discount";
             $discount = $this->addUpFixedDiscount();
         }
         return array($subtotal, $discount_type, $discount);

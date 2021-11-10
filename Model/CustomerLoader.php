@@ -1,11 +1,9 @@
 <?php
 
-use JetBrains\PhpStorm\Pure;
 
-//require 'Connection.php';
 class CustomerLoader
 {
-    #[Pure] private function assignCustomerData($row): Customer
+    private function assignCustomerData($row): Customer
     {
         $id = ($row['id']);
         $firstname = ($row['firstname']);
@@ -31,7 +29,6 @@ class CustomerLoader
                 $customers[] = $cust;
             }
         }
-
         return $customers;
     }
 
@@ -43,7 +40,6 @@ class CustomerLoader
         $row = $result->fetch_assoc();
 
         return $this->assignCustomerData($row);
-
     }
 }
 

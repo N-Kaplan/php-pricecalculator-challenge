@@ -2,9 +2,13 @@
 
 class ProductLoader
 {
-    public function __construct()
+    public function assignProductData($row): Product
     {
+        $id = ($row['id']);
+        $name = ($row['name']);
+        $price = ($row['price']);
 
+        return new Product($id, $name, $price);
     }
 
     public function getProducts(): array
@@ -17,25 +21,20 @@ class ProductLoader
         if ($result->num_rows > 0) {
             // output data of each row
             while ($row = $result->fetch_assoc()) {
-                $id = ($row['id']);
-                $name = ($row['name']);
-                $price = ($row['price']);
-
-                $prod = new Product($id, $name, $price);
+                $prod = $this->assignProductData($row);
                 $products[] = $prod;
             }
         }
-
         return $products;
     }
 
     public function getProductById(string $id)
     {
-        $products = $this->getProducts();
-        foreach ($products AS $product) {
-            if ($product->getId() === $id) {
-                return $product;
-            }
-        }
+        $sql = "SELECT * FROM product WHERE id=" . $id;
+        $db =  new Connection;
+        $result =  $db->dataConnection()->query($sql);
+        $row = $result->fetch_assoc();
+
+        return $this->assignProductData($row);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 //todo: separate the getById functions from the 3 loader classes to avoid repeating code.
-
+require 'Model/Database.php';
 require 'Model/Customer.php';
 require 'Model/CustomerLoader.php';
 require 'Model/CustomerGroup.php';

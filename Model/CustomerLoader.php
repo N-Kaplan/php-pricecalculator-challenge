@@ -1,5 +1,6 @@
 <?php
-require 'Database.php';
+//
+
 class CustomerLoader
 {
     private function assignCustomerData($row): Customer
@@ -28,8 +29,6 @@ class CustomerLoader
                 $customers[] = $cust;
             }
         }
-       
-
         return $customers;
     }
 
@@ -42,7 +41,6 @@ class CustomerLoader
         $row = $result->fetch_assoc();
 
         return $this->assignCustomerData($row);
-
     }
 }
 

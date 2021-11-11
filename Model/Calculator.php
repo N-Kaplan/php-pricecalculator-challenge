@@ -4,12 +4,10 @@ class Calculator
 {
     private Product $product;
     private Customer $customer;
-    //private CustomerGroup $customerGroup;
 
     /**
      * @param Product $product
      * @param Customer $customer
-     * @param CustomerGroup $customerGroup
      */
     public function __construct(Product $product, Customer $customer)
     {
@@ -40,7 +38,6 @@ class Calculator
         foreach ($groups AS $group) {
             $groups_var_discount[] = intval($group->getVariableDiscount());
         }
-
         return max($groups_var_discount);
     }
 
@@ -52,67 +49,41 @@ class Calculator
         foreach ($groups AS $group) {
             $fixed_discount += intval($group->getFixedDiscount())*100;
         }
-        //$fixed_discount += intval($this->customer->getFixedDiscount());
 
         return $fixed_discount;
     }
 
-    public function pickGroupDiscount(): array
+    public function compareGroupDiscount(): array
     {
-        $original_price = $this->product->getPrice();
-        $discount_type = '';
+        $original_price = intval($this->product->getPrice());
+        $variable_disc = $original_price * $this->pickVariableDiscount()/100;
+        $fixed_disc = $this->addUpFixedDiscount() < $original_price ? $this->addUpFixedDiscount() : $original_price;
+        $discount_type = $variable_disc > $fixed_disc ? "variable group discount" : "fixed group discount";
 
-        $price_after_variable_disc = ($original_price * (100-$this->pickVariableDiscount()))/100;
-        $price_after_fixed_disc = $original_price - $this->addUpFixedDiscount() > 0 ? $original_price - $this->addUpFixedDiscount() : 0;
-
-        if ($price_after_variable_disc < $price_after_fixed_disc) {
-            $subtotal = $price_after_variable_disc;
-            $discount_type = "variable group discount";
-            $discount = $this->pickVariableDiscount();
-        } else {
-            $subtotal = $price_after_fixed_disc;
-            $discount_type = "fixed group discount";
-            $discount = $this->addUpFixedDiscount();
-        }
-        return array($subtotal, $discount_type, $discount);
+        return array($fixed_disc, $variable_disc, $discount_type);
     }
 
     public function finalPrice(): array
     {
-        $original_price = $this->product->getPrice();
-        $before_customer_discount = $this->pickGroupDiscount();
-        $subtotal = $before_customer_discount[0];
-        $total = $subtotal;
-        $group_discount_type = $before_customer_discount[1];
-        $customer_discount_type = "";
-        $discount = $before_customer_discount[2];
+        $original_price = intval($this->product->getPrice());
+        $group_discount_type = $this->compareGroupDiscount()[2];
+        $customer_var_discount = intval($this->customer->getVariableDiscount());
+        $customer_fixed_discount = intval($this->customer->getFixedDiscount())*100; //price in cents
 
-        $customer_var_discount = $this->customer->getVariableDiscount();
-        $customer_fixed_discount = $this->customer->getFixedDiscount();
+        $max_var_discount = $customer_var_discount;
+        //if discount is larger than price, price is 0 (no negative price possible)
+        $subtotal = $original_price > $customer_fixed_discount ? $original_price - $customer_fixed_discount : 0;
+        $subtotal_after_fgd = $subtotal;
+        if ($group_discount_type === "fixed group discount") {
+            $subtotal_after_fgd = $subtotal > $this->addUpFixedDiscount() ? $subtotal - $this->addUpFixedDiscount() : 0;
+        } else {
+            $max_var_discount = max(array($this->pickVariableDiscount(), $customer_var_discount)); //largest of customer or group variable discount
+            }
+        $max_var_discount_amount = $subtotal_after_fgd * $max_var_discount / 100;
 
-        if ($customer_fixed_discount !== null) {
-            $total -= $customer_fixed_discount;
-            $customer_discount_type = "fixed customer discount";
-        }
+        $total = $subtotal_after_fgd - $max_var_discount_amount;
 
-        switch ($group_discount_type) {
-            case "fixed group discount":
-                //$total -= intval($customer_fixed_discount)*100;
-                break;
-            case "variable group discount":
-                if ($customer_var_discount !== null && $customer_var_discount >= $discount) {
-                    $discount = $customer_var_discount;
-                    $customer_discount_type = "customer variable discount";
-                } // else the earlier defined discount and subtotal are kept
-                $total = ($original_price * (100 - $discount))/100;
-                break;
-            default:
-                $total = $original_price;
-                $group_discount_type = $customer_discount_type = "no discount available";
-        }
-
-        //original price, subtotal after group discount, total after customer discount, discount type.
-        return array(number_format($original_price/100, 2), number_format($subtotal/100, 2), number_format($total/100, 2), $group_discount_type, $customer_discount_type);
+        return array(number_format($original_price/100, 2), number_format($customer_fixed_discount/100, 2), number_format($subtotal/100, 2), $customer_var_discount, $group_discount_type, number_format($this->addUpFixedDiscount()/100,2), number_format($subtotal_after_fgd/100, 2), $this->pickVariableDiscount(), $max_var_discount, number_format($max_var_discount_amount/100, 2), number_format($total/100, 2));
     }
 
 }

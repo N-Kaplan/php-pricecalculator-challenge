@@ -15,9 +15,9 @@
 - Learn MVC
 - Import data with a database
 - Make a price calculator with 3 entities:
-1) Customer
-2) Customer group
-3) Product
+    1) Customer
+    2) Customer group
+    3) Product
 
 
 # Check List

@@ -1,16 +1,7 @@
+<?php require 'includes/header.php' ?>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Information</title>
-</head>
-
-<body>
-    <h1>Product Information</h1>
+<section>
+<h1>Product Information</h1>
     <p><a href="index.php">Back to Homepage</a></p>
 
 <?php
@@ -29,6 +20,5 @@
             </tr><br>";
     }
     ?>
-</body>
-
-</html>
+</section>
+<?php require 'includes/footer.php' ?>

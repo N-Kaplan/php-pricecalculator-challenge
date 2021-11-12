@@ -1,15 +1,6 @@
+<?php require 'includes/header.php' ?>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Price Calculator</title>
-</head>
-
-<body>
+<section>
     <h1>Price Calculator</h1>
     <p><a href="index.php? page=infoPage">Product Infomation</a>
     <form method="post">
@@ -30,28 +21,24 @@
                 echo "<option value='{$product->getId()}'>{$product->getName()}: € " . ($product->getPrice() / 100) . "</option>";
             }
             ?>
-
         </select>
         <br>
         <br>
         <button type="submit" class="btn btn-primary">Submit</button>
         <br>
         <br>
-<!--        <label>Product Information</label>-->
+        <!--        <label>Product Information</label>-->
     </form>
 
-    <section>
-        <?php
-        if (isset($priceDisplay)) {
-            echo "Customer Name: ". $customerData->getFirstname() . "  ".  $customerData->getLastname() . "<br>";
-            echo "Product Name: ". $productData->getName() . "<br>";
-            echo $priceDisplay;
-            
-        }
+</section>
+<section>
+    <?php
+    if (isset($priceDisplay)) {
+        echo "Customer Name: " . $customerData->getFirstname() . "  " .  $customerData->getLastname() . "<br>";
+        echo "Product Name: " . $productData->getName() . "<br>";
+        echo $priceDisplay;
+    }
 
-        ?>
-    </section>
-
-</body>
-
-</html>
+    ?>
+</section>
+<?php require 'includes/footer.php'?>

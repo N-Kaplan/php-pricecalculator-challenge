@@ -12,5 +12,5 @@
 
 <body>
     <header>
-        <h1>Welcome to my site</h1>
+        <h1>Welcome to Price Calculator </h1>
     </header>

@@ -1,21 +1,25 @@
 body{
-    text-align: center;
-    background: rgb(182, 201, 238);
-    color: white;
+    text-align: left;
+    background: #b6c9ee;
+    
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 h1{
+    text-align: center;
     font-size: 40px;
     color: rgb(35, 7, 102);
+    padding: 40px;
 }
 
 h2{
+    text-align: center;
     font-size: 30px;
     color: rgb(88, 60, 8);
 }
 
 p{
+    text-align: center;
     font-size: 25px;
 }
 
@@ -65,7 +69,8 @@ button:hover{
 h4{
     color: rgb(88, 60, 8);
     text-align: left;
-    padding-left: 35%;
+    padding-left: 20px;
+    padding-top: 20px;
 }
 
 .list{

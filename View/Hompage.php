@@ -1,7 +1,7 @@
 <?php require 'includes/header.php' ?>
 
 <section>
-    <h1>Price Calculator</h1>
+    <h2>Price Calculator</h2>
     <p><a href="index.php? page=infoPage">Product Infomation</a>
     <form method="post">
         <label>Customer Name: </label>
@@ -14,7 +14,7 @@
         </select>
         <br>
         <br>
-        <label>Choose a Product</label>
+        <label>Choose a Product: </label>
         <select name="product" id="product">
             <?php
             foreach ($getProduct as $product) {
@@ -24,7 +24,7 @@
         </select>
         <br>
         <br>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Total Price</button>
         <br>
         <br>
         <!--        <label>Product Information</label>-->
@@ -32,13 +32,16 @@
 
 </section>
 <section>
+    <h4>
     <?php
     if (isset($priceDisplay)) {
         echo "Customer Name: " . $customerData->getFirstname() . "  " .  $customerData->getLastname() . "<br>";
         echo "Product Name: " . $productData->getName() . "<br>";
         echo $priceDisplay;
     }
-
     ?>
+    </h4>
+    
 </section>
+<br><br>
 <?php require 'includes/footer.php'?>

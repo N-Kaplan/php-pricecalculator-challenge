@@ -5,4 +5,68 @@ body{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-p
+h1{
+    font-size: 40px;
+    color: rgb(88, 60, 8);
+}
+
+h2{
+    font-size: 30px;
+    color: rgb(206, 231, 227);
+}
+
+p{
+    font-size: 25px;
+}
+
+form{
+    font-size: 20px;
+}
+
+select{
+    background-color: rgb(238, 232, 232);
+    border-color: rgb(119, 112, 100);
+    border-radius: 5%;
+    padding: 5px;
+    color: black;
+    font-size: 15px;
+}
+
+
+
+label{
+    color: rgb(206, 231, 227);
+    font-weight: bold;
+}
+
+button{
+    display: inline-block;
+    padding: 0.5em 1.2em;
+    border:rgb(228, 28, 28);
+    border-radius: 0.2em;
+    box-sizing: border-box;
+    background-color: rgb(88, 60, 8);
+    color: rgb(235, 228, 215);
+    font-size: 16px;
+}
+
+button:hover{
+    background-color: skyblue;
+    color: rgb(148, 30, 30);
+}
+
+h4{
+    color: rgb(88, 60, 8);
+    
+}
+
+footer{
+    position: fixed;
+    left: 0;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+   
+
+
+}

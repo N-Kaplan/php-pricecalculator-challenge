@@ -19,17 +19,8 @@ class HomepageController
             //var_dump($productData);
 
             $calc = new Calculator($productData, $customerData);
-            var_dump($calc->getGroups());
-            var_dump($calc->pickVariableDiscount());
-            var_dump($calc->addUpFixedDiscount());
-            var_dump($calc->pickGroupDiscount());
-            var_dump($calc->finalPrice());
-
             $priceData = $calc->finalPrice();
             $priceDisplay = "Original Price: € " . $priceData[0] . " <br>After discount: €" . $priceData[1] . "<br>" . "Discount information: " . $priceData[2] .".";
-
-            
-
         }
 
         require 'View/Hompage.php';

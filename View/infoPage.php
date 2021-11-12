@@ -1,7 +1,7 @@
 <?php require 'includes/header.php' ?>
 
 <section>
-<h1>Product Information</h1>
+<h2>Product Information</h2>
     <p><a href="index.php">Back to Homepage</a></p>
 
 <?php

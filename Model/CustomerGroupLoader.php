@@ -13,6 +13,7 @@ class CustomerGroupLoader
         return new CustomerGroup($id, $name, $parent_id, $fixed_discount, $variable_discount);
     }
 
+
     public function getCustomerGroups(): array
     {
         $sql = "SELECT * FROM customer_group";

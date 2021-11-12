@@ -15,8 +15,9 @@ class HomepageController
         if(isset($_POST['customers']) && $_POST['customers'] !== null && $_POST['product'] !== null){
             $customerData = $customers->getCustomerById($POST['customers']);
             $productData = $products->getProductById($POST['product']);
+            $quantity = intval($POST['quantity']);
 
-            $calc = new Calculator($productData, $customerData);
+            $calc = new Calculator($productData, $customerData, $quantity);
 
             $calcDisplay = new CalculatorDisplay();
             $displayGroups = $calcDisplay->displayGroupInfo($calc);

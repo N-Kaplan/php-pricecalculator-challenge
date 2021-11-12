@@ -12,7 +12,7 @@ class CalculatorDisplay
         $groups = $calculator->getGroups();
         $group_info = [];
         foreach ($groups AS $group) {
-            $group_info[] = "group name: " . $group->getName() . ": fixed discount: € " . number_format(intval($group->getFixedDiscount()), 2) . " - variable discount: " . strval(intval($group->getVariableDiscount())) . "%";
+            $group_info[] = "group name: " . $group->getName() . ": fixed discount: € " . number_format(intval($group->getFixedDiscount()), 2) . " per product - variable discount: " . strval(intval($group->getVariableDiscount())) . "%";
         }
         $display = "<table class=\"table table-striped\">";
         foreach($group_info AS $group) {

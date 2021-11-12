@@ -3,7 +3,7 @@
 <section>
     <h2>Price Calculator</h2>
 
-    <p><a href="index.php? page=infoPage">Product Infomation</a>
+    <p><a href="index.php page=infoPage">Product Infomation</a>
     <form method="post">
         <label>Customer Name: </label>
         <select name="customers" id="customers">
@@ -15,7 +15,7 @@
         </select>
         <br>
         <br>
-        <label>Choose a Product: </label>
+        <label>Select a Product: </label>
         <select name="product" id="product">
             <?php
             foreach ($getProduct as $product) {
@@ -25,23 +25,18 @@
         </select>
         <br>
         <br>
+        <label for="quantity">Select Quantity: </label>
+        <input name="quantity" id="quantity" type="number" min="1" max="100" value="1"/>
+        <br>
+        <br>
         <button type="submit" class="btn btn-primary">Total Price</button>
         <br>
         <br>
-        <!--        <label>Product Information</label>-->
     </form>
 
 
     <section>
         <?php
-//        if (isset($displayCustomer)) {
-//            echo "<h4>&emsp; Customer information:</h4>";
-//            echo "&emsp;" . $displayCustomer . "<br><br>";
-//        }
-//        if (isset($displayProduct)) {
-//            echo "<h4>&emsp; Product information:</h4>";
-//            echo "&emsp;" . $displayProduct . "<br><br>";
-//        }
         if (isset($displayOrder) ) {
             echo "<h4>&emsp; Order information:</h4><br>";
             echo $displayOrder;

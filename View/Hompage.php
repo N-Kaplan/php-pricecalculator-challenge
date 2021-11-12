@@ -3,7 +3,7 @@
 <section>
     <h2>Check Your Lowerst Price</h2>
 
-    <p><a href="index.php page=infoPage">Product Infomation</a>
+    <p><a href="index.php? page=infoPage">Product Infomation</a>
     <form method="post">
         <label>Customer Name: </label>
         <select name="customers" id="customers">

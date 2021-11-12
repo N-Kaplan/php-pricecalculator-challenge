@@ -38,11 +38,12 @@
 - [x] Searching discount based on groupId
 - [x] Searching discount based on parentId
 - [x] Calculate the price and no negative prices
-- [x] Create a table to dispaly how the price is calculated
+- [x] Create a table to display how the price is calculated
 - [x] Add a category page for the different products
 
 # Notes for implementation
 The database used for this exercise was provided with the [instructions](https://github.com/becodeorg/ANT-Lamarr-5.34/tree/main/2.The-Hill/php/6.oop-pricecalculator) and can be found [here](https://github.com/becodeorg/ANT-Lamarr-5.34/tree/main/2.The-Hill/php/6.oop-pricecalculator/resources). \
+
 Create a .env file in the project's root folder with the following structure:\
 DBSERVER = your local host name \
 DBUSER = your username \

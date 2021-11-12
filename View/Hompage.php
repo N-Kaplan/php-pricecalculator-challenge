@@ -1,7 +1,7 @@
 <?php require 'includes/header.php' ?>
 
 <section>
-    <h2>Price Calculator</h2>
+    <h2>Check Your Lowerst Price</h2>
 
     <p><a href="index.php? page=infoPage">Product Infomation</a>
     <form method="post">
@@ -25,13 +25,11 @@
         </select>
         <br>
         <br>
-        <button type="submit" class="btn btn-primary">Total Price</button>
+        <button type="submit" >Total Price</button>
         <br>
         <br>
         <!--        <label>Product Information</label>-->
     </form>
-
-
     <section>
         <?php
 //        if (isset($displayCustomer)) {

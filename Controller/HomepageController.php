@@ -14,17 +14,14 @@ class HomepageController
 
         if(isset($_POST['customers']) && $_POST['customers'] !== null && $_POST['product'] !== null){
             $customerData = $customers->getCustomerById($POST['customers']);
-            //var_dump($customerData);
             $productData = $products->getProductById($POST['product']);
-            //var_dump($productData);
 
             $calc = new Calculator($productData, $customerData);
 
-            $displayProduct = ucfirst($productData->getName()) . ": € " . number_format(intval($productData->getPrice()/100), 2);
-            $displayCustomer = $customerData-> getFirstname() . " " . $customerData->getLastname() . ", Customer ID: " . $customerData->getId();
-
             $calcDisplay = new CalculatorDisplay();
+            $displayGroups = $calcDisplay->displayGroupInfo($calc);
             $displayCalculation = $calcDisplay->displayCalculation($calc);
+            $displayOrder = $calcDisplay->displayOrder($customerData, $productData, $calc);
         }
 
         require 'View/Hompage.php';

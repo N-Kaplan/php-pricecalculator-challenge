@@ -43,13 +43,21 @@
 
     <section>
         <?php
-        if (isset($displayCustomer)) {
-            echo "<h4>&emsp; Customer information:</h4>";
-            echo "&emsp;" . $displayCustomer . "<br>";
+//        if (isset($displayCustomer)) {
+//            echo "<h4>&emsp; Customer information:</h4>";
+//            echo "&emsp;" . $displayCustomer . "<br><br>";
+//        }
+//        if (isset($displayProduct)) {
+//            echo "<h4>&emsp; Product information:</h4>";
+//            echo "&emsp;" . $displayProduct . "<br><br>";
+//        }
+        if (isset($displayOrder) ) {
+            echo "<h4>&emsp; Order information:</h4><br>";
+            echo $displayOrder;
         }
-        if (isset($displayProduct)) {
-            echo "<h4>&emsp; Product information:</h4>";
-            echo "&emsp;" . $displayProduct . "<br>";
+        if(isset($displayGroups)) {
+            echo "<h4>&emsp; Customer Groups:</h4><br>";
+            echo $displayGroups;
         }
 
         if(isset($displayCalculation)) {

@@ -9,7 +9,7 @@
         <select name="customers" id="customers">
             <?php
             foreach ($getCustomer as $customer) {
-                echo "<option value='{$customer->getId()}'>{$customer->getFirstname()}  " . $customer->getLastname() . "</option>";
+                echo "<option value='{$customer->getId()}'>{$customer->getFirstname()} " . $customer->getLastname() . "</option>";
             }
             ?>
         </select>

@@ -20,7 +20,7 @@
     3) Product
 
 
-# Check List
+# Checklist
 - [x] Make repository
 - [x] Import database and connect to localserver
 - [x] Create MVC structure
@@ -42,7 +42,7 @@
 - [x] Add a category page for the different products
 
 # Notes for implementation
-The database used for this exercise was provided with the [instructions](https://github.com/becodeorg/ANT-Lamarr-5.34/tree/main/2.The-Hill/php/6.oop-pricecalculator) and can be found [here](https://github.com/becodeorg/ANT-Lamarr-5.34/tree/main/2.The-Hill/php/6.oop-pricecalculator/resources). \
+The database used for this exercise was provided with the [instructions](https://github.com/becodeorg/ANT-Lamarr-5.34/tree/main/2.The-Hill/php/6.oop-pricecalculator) and can be found [here](https://github.com/becodeorg/ANT-Lamarr-5.34/tree/main/2.The-Hill/php/6.oop-pricecalculator/resources). 
 
 Create a .env file in the project's root folder with the following structure:\
 DBSERVER = your local host name \

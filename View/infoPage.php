@@ -6,18 +6,19 @@
 <div class="list">
 <?php
     echo "
+        <table>
         <tr>
         <th><strong>ID</strong></th>
         <th><strong>Name</strong></th>
         <th><strong>Price</strong></th>
-    </tr><br>";
+        </tr><br>";
     foreach ($getProduct as $product) {
         echo "
             <tr>
-                <td>{$product->getId()}</td>
-                <td>{$product->getName()}</td>
-                <td>{$product->getPrice()}</td>
-            </tr><br>";
+                <td>{$product->getId()}.</td>
+                <td>{$product->getName()} - </td>
+                <td> € " . $product->getPrice()/100 . "</td>
+            </tr><br></table>";
     }
     ?>  
 </div>

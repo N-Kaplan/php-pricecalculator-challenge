@@ -67,7 +67,9 @@ class Calculator
     }
 
     public function finalPrice(): array
-    {
+    {   //fixed discounts are deducted first
+        //if both the selected group discount and the customer discount are variable, the largest one is applied
+        //database prices are in cents for the products but in euros for the fixed discounts
         $original_price = intval($this->product->getPrice());
         $subtotal_by_quantity = $original_price * $this->quantity;
         $group_discount_type = $this->compareGroupDiscount()[2];

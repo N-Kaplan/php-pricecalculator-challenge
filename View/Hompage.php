@@ -1,7 +1,7 @@
 <?php require 'includes/header.php' ?>
 
 <section>
-    <h2>Price Calculator</h2>
+    <h2>Check Your Lowerst Price</h2>
 
     <p><a href="index.php page=infoPage">Product Infomation</a>
     <form method="post">
@@ -33,8 +33,6 @@
         <br>
         <br>
     </form>
-
-
     <section>
         <?php
         if (isset($displayOrder) ) {

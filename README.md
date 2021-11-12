@@ -6,7 +6,7 @@
 - Deployment strategy : `NA`
 - Team challenge : `pairs`
 
-# Contributors:
+# Contributors
 - [Naama Kaplan](https://github.com/N-Kaplan)
 - [Xiaoqi Li](https://github.com/830503)
 

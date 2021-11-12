@@ -1,11 +1,11 @@
 <?php require 'includes/header.php' ?>
 
 <section>
-    <h2>Check Your Lowerst Price</h2>
+    <h2>Check Your Lowest Price</h2>
 
-    <p><a href="index.php? page=infoPage">Product Infomation</a>
+    <p><a href="index.php? page=infoPage">Product Information</a>
     <form method="post">
-        <label>Customer Name: </label>
+        <label for="customers">Customer Name: </label>
         <select name="customers" id="customers">
             <?php
             foreach ($getCustomer as $customer) {
@@ -15,7 +15,7 @@
         </select>
         <br>
         <br>
-        <label>Select a Product: </label>
+        <label for="product">Select a Product: </label>
         <select name="product" id="product">
             <?php
             foreach ($getProduct as $product) {

@@ -25,7 +25,7 @@ class HomepageController
             $displayOrder = $calcDisplay->displayOrder($customerData, $productData, $calc);
         }
 
-        require 'View/Hompage.php';
+        require 'View/hompage.php';
         
     }
 }

@@ -18,7 +18,7 @@ class CalculatorDisplay
 
         $price_info = $calculator->finalPrice();
 
-        $display = "<table>";
+        $display = "<table class=\"table table-striped\">";
         foreach($price_info AS $key=>$value) {
             $display.= $this->wrapElement($this->wrapElement($key, "td") . $this->wrapElement($value, "td"), "tr");
         }

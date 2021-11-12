@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Price Calculator</title>
 </head>
 
@@ -42,17 +43,18 @@
 
     <section>
         <?php
-        if (isset($priceDisplay)) {
-            echo "Customer Name: ". $customerData->getFirstname() . "  ".  $customerData->getLastname() . "<br>";
-            echo "Product Name: ". $productData->getName() . "<br>";
-
-            var_dump($customerData);
-            var_dump($productData);
-            echo $priceDisplay;
+        if (isset($displayCustomer)) {
+            echo "<h4>&emsp; Customer information:</h4>";
+            echo "&emsp;" . $displayCustomer . "<br>";
+        }
+        if (isset($displayProduct)) {
+            echo "<h4>&emsp; Product information:</h4>";
+            echo "&emsp;" . $displayProduct . "<br>";
         }
 
-        if(isset($display)) {
-            echo $display;
+        if(isset($displayCalculation)) {
+            echo "<h4>&emsp; Price Calculation:</h4><br>";
+            echo $displayCalculation;
         }
 
         ?>

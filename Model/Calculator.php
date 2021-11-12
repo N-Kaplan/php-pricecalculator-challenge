@@ -85,7 +85,7 @@ class Calculator
         $total = $subtotal_after_fgd - $max_var_discount_amount;
 
         $values = array(number_format($original_price/100, 2), number_format($customer_fixed_discount/100, 2), number_format($subtotal/100, 2), $customer_var_discount, $group_discount_type, number_format($this->addUpFixedDiscount()/100,2), number_format($subtotal_after_fgd/100, 2), $this->pickVariableDiscount(), $max_var_discount, number_format($max_var_discount_amount/100, 2), number_format($total/100, 2));
-        $keys = ["original price", "customer fixed discount", "subtotal after customer fixed discount", "customer variable discount (%)", "most advantageous group discount", "combined group fixed discount", "subtotal after fixed group discount, if chosen", "variable group discount (%)", "most advantageous variable discount, if relevant", "variable discount, if relevant", "total price"];
+        $keys = ["original price - € ", "customer fixed discount - € ", "subtotal after customer fixed discount  - € ", "customer variable discount (%)", "most advantageous group discount", "combined group fixed discount  - € ", "subtotal after fixed group discount, if chosen  - € ", "variable group discount (%)", "most advantageous variable discount, if relevant  - € ", "variable discount, if relevant  - € ", "total price  - € "];
         return array_combine($keys, $values);
 
     }

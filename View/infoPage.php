@@ -1,24 +1,15 @@
+<?php require 'includes/header.php' ?>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Information</title>
-</head>
-
-<body>
-    <h1>Product Information</h1>
+<section>
+<h2>Product Information</h2>
     <p><a href="index.php">Back to Homepage</a></p>
-
+<div class="list">
 <?php
     echo "
         <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Price</th>
+        <th><strong>ID</strong></th>
+        <th><strong>Name</strong></th>
+        <th><strong>Price</strong></th>
     </tr><br>";
     foreach ($getProduct as $product) {
         echo "
@@ -28,7 +19,7 @@
                 <td>{$product->getPrice()}</td>
             </tr><br>";
     }
-    ?>
-</body>
-
-</html>
+    ?>  
+</div>
+</section>
+<?php require 'includes/footer.php' ?>

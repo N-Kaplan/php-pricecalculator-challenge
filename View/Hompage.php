@@ -1,17 +1,8 @@
+<?php require 'includes/header.php' ?>
 
-<!DOCTYPE html>
-<html lang="en">
+<section>
+    <h2>Price Calculator</h2>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>Price Calculator</title>
-</head>
-
-<body>
-    <h1>Price Calculator</h1>
     <p><a href="index.php? page=infoPage">Product Infomation</a>
     <form method="post">
         <label>Customer Name: </label>
@@ -24,22 +15,22 @@
         </select>
         <br>
         <br>
-        <label>Choose a Product</label>
+        <label>Choose a Product: </label>
         <select name="product" id="product">
             <?php
             foreach ($getProduct as $product) {
                 echo "<option value='{$product->getId()}'>{$product->getName()}: € " . ($product->getPrice() / 100) . "</option>";
             }
             ?>
-
         </select>
         <br>
         <br>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Total Price</button>
         <br>
         <br>
-<!--        <label>Product Information</label>-->
+        <!--        <label>Product Information</label>-->
     </form>
+
 
     <section>
         <?php
@@ -68,6 +59,5 @@
         ?>
     </section>
 
-</body>
 
-</html>
+

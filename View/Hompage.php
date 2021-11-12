@@ -51,9 +51,9 @@
             echo $priceDisplay;
         }
 
-//        if(isset($display)) {
-//            echo "<table><tr>". $display . "</tr></table>";
-//        }
+        if(isset($display)) {
+            echo $display;
+        }
 
         ?>
     </section>

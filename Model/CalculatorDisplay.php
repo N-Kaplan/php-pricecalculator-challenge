@@ -9,13 +9,21 @@ class CalculatorDisplay
 
     public function displayCalculation(Calculator $calculator)
     {
-        $groups = $calculator->getGroups();
-        //array: original price, selected discount, final price
+//        $groups = $calculator->getGroups();
+//        $group_info = [];
+//        foreach ($groups AS $group) {
+//            $group_info[] = [$group->getName(), $group->getFixedDiscount(), $group->getVariableDiscount];
+//        }
+
+
         $price_info = $calculator->finalPrice();
 
-//        display = "";
-//        foreach($groups AS $group) {
-//            display.= $this->wrapElement($group->getName(), "tr");
-//        }
+        $display = "<table>";
+        foreach($price_info AS $key=>$value) {
+            $display.= $this->wrapElement($this->wrapElement($key, "td") . $this->wrapElement($value, "td"), "tr");
+        }
+        $display .= "</table>";
+
+        return $display;
     }
 }

@@ -74,6 +74,7 @@ class Calculator
         //if discount is larger than price, price is 0 (no negative price possible)
         $subtotal = $original_price > $customer_fixed_discount ? $original_price - $customer_fixed_discount : 0;
         $subtotal_after_fgd = $subtotal;
+
         if ($group_discount_type === "fixed group discount") {
             $subtotal_after_fgd = $subtotal > $this->addUpFixedDiscount() ? $subtotal - $this->addUpFixedDiscount() : 0;
         } else {
@@ -83,7 +84,10 @@ class Calculator
 
         $total = $subtotal_after_fgd - $max_var_discount_amount;
 
-        return array(number_format($original_price/100, 2), number_format($customer_fixed_discount/100, 2), number_format($subtotal/100, 2), $customer_var_discount, $group_discount_type, number_format($this->addUpFixedDiscount()/100,2), number_format($subtotal_after_fgd/100, 2), $this->pickVariableDiscount(), $max_var_discount, number_format($max_var_discount_amount/100, 2), number_format($total/100, 2));
+        $values = array(number_format($original_price/100, 2), number_format($customer_fixed_discount/100, 2), number_format($subtotal/100, 2), $customer_var_discount, $group_discount_type, number_format($this->addUpFixedDiscount()/100,2), number_format($subtotal_after_fgd/100, 2), $this->pickVariableDiscount(), $max_var_discount, number_format($max_var_discount_amount/100, 2), number_format($total/100, 2));
+        $keys = ["original price", "customer fixed discount", "subtotal after customer fixed discount", "customer variable discount (%)", "most advantageous group discount", "combined group fixed discount", "subtotal after fixed group discount, if chosen", "variable group discount (%)", "most advantageous variable discount, if relevant", "variable discount, if relevant", "total price"];
+        return array_combine($keys, $values);
+
     }
 
 }

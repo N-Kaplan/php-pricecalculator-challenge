@@ -11,13 +11,14 @@
 - [Xiaoqi Li](https://github.com/830503)
 
 # Mission
+- Apply OOP in PHP
+- Learn MVC
+- Import data with a database
 - Make a price calculator with 3 entities:
 1) Customer
 2) Customer group
 3) Product
-- Apply OOP in PHP
-- Learn MVC
-- Import data with a database
+
 
 # Check List
 - [x] Make repository
